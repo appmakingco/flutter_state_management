@@ -12,8 +12,8 @@ class CounterScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(),
       body: Center(
-        child: Text(
-          "${_counterController.counter}",
+        child: Obx(
+          () => Text("${_counterController.counter}"),
         ),
       ),
       floatingActionButton: FloatingActionButton(
