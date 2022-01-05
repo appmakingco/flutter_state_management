@@ -33,14 +33,7 @@ class AddTaskScreen extends StatelessWidget {
             ),
             const SizedBox(height: 8),
             ElevatedButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => AddTaskScreen(),
-                  ),
-                );
-              },
+              onPressed: () {},
               child: const Text("Add Task"),
             )
           ],

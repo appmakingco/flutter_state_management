@@ -22,7 +22,12 @@ class TodoListScreen extends StatelessWidget {
       floatingActionButton: FloatingActionButton(
         child: const Icon(Icons.add),
         onPressed: () {
-          
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => AddTaskScreen(),
+            ),
+          );
         },
       ),
     );
