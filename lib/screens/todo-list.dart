@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:state_management/custom-widgets/status-card.dart';
 import 'package:state_management/screens/add-task.dart';
 
@@ -23,7 +22,7 @@ class TodoListScreen extends StatelessWidget {
       floatingActionButton: FloatingActionButton(
         child: const Icon(Icons.add),
         onPressed: () {
-          Get.to(AddTaskScreen());
+          
         },
       ),
     );
