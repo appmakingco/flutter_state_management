@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:state_management/controllers/todo-controller.dart';
 
 class StatusCard extends StatelessWidget {
-  const StatusCard({Key? key}) : super(key: key);
+  StatusCard({Key? key}) : super(key: key);
+
+  TodoController _todoController = Get.put(TodoController());
 
   @override
   Widget build(BuildContext context) {
@@ -16,10 +20,12 @@ class StatusCard extends StatelessWidget {
               children: [
                 Text("Total"),
                 const SizedBox(height: 8),
-                Text(
-                  "0",
-                  style: TextStyle(
-                    fontSize: 20,
+                Obx(
+                  () => Text(
+                    "${_todoController.getTotalTaskCount()}",
+                    style: TextStyle(
+                      fontSize: 20,
+                    ),
                   ),
                 ),
               ],
@@ -28,10 +34,12 @@ class StatusCard extends StatelessWidget {
               children: [
                 Text("Completed"),
                 const SizedBox(height: 8),
-                Text(
-                  "0",
-                  style: TextStyle(
-                    fontSize: 20,
+                Obx(
+                  () => Text(
+                    "${_todoController.getCompletedTaskCount()}",
+                    style: TextStyle(
+                      fontSize: 20,
+                    ),
                   ),
                 ),
               ],
