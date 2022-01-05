@@ -1,26 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:state_management/controller/counter-controller.dart';
 
 class CounterScreen extends StatelessWidget {
-  CounterScreen({Key? key}) : super(key: key);
-
-  CounterController _counterController = Get.put(CounterController());
+  const CounterScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
-      body: Center(
-        child: Obx(
-          () => Text("${_counterController.counter}"),
-        ),
-      ),
+      body: Center(child: Text("0")),
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.add),
-        onPressed: () {
-          _counterController.increament();
-        },
+        onPressed: () {},
       ),
     );
   }
