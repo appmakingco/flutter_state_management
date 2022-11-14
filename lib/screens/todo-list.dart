@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:state_management/custom-widgets/status-card.dart';
+import 'package:state_management/providers/todo-provider.dart';
 import 'package:state_management/screens/add-task.dart';
 
 class TodoListScreen extends StatelessWidget {
@@ -15,7 +17,29 @@ class TodoListScreen extends StatelessWidget {
         children: [
           StatusCard(),
           Expanded(
-            child: ListView(),
+            child: Consumer<TodoProvider>(
+              builder: (context, todo, child) {
+                return ListView.builder(
+                  itemCount: todo.tasks.length,
+                  itemBuilder: (bc, index) {
+                    return ListTile(
+                      title: Text("${todo.tasks[index]['title']}"),
+                      subtitle: Text("${todo.tasks[index]['desc']}"),
+                      trailing: IconButton(
+                        icon: todo.tasks[index]['isCompleted']
+                            ? Icon(Icons.check_box)
+                            : Icon(Icons.check_box_outline_blank_outlined),
+                        onPressed: () {
+                          todo.tasks[index]['isCompleted']
+                              ? todo.markAsInComplete(index)
+                              : todo.markAsComplete(index);
+                        },
+                      ),
+                    );
+                  },
+                );
+              },
+            ),
           )
         ],
       ),

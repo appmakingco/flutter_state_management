@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:state_management/providers/todo-provider.dart';
 
 class AddTaskScreen extends StatelessWidget {
   AddTaskScreen({Key? key}) : super(key: key);
@@ -33,7 +35,10 @@ class AddTaskScreen extends StatelessWidget {
             ),
             const SizedBox(height: 8),
             ElevatedButton(
-              onPressed: () {},
+              onPressed: () {
+                Provider.of<TodoProvider>(context, listen: false)
+                    .addTask(_titleCtrl.text, _descCtrl.text);
+              },
               child: const Text("Add Task"),
             )
           ],
